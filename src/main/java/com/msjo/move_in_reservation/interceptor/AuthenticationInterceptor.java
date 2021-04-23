@@ -1,5 +1,6 @@
 package com.msjo.move_in_reservation.interceptor;
 
+import com.msjo.move_in_reservation.domain.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +18,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         HttpSession session = request.getSession();
 
-        //Checking Login Info
+        if((User) session.getAttribute("loginUser") == null) return false;
 
         return true;
     }

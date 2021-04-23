@@ -3,16 +3,20 @@
 ## User
 |Method|Uri( /api/users )|Description|
 |:---:|:---:|:---:|
-|POST|/login|log in|
+
+## Login
+|Method|Uri|Description|
+|:---:|:---:|:---:|
+|POST|/login|로그인|
 
 ## Apartment
 |Method|Uri( /api/apartments )|Description|
 |:---:|:---:|:---:|
-|GET|/|return all|
+|GET|/|동 리스트 반환|
 
 ## Reservation
 |Method|Uri( /api/reservations )|Description|
 |:---:|:---:|:---:|
-|GET|/|get reservation info about login info|
-|POST|/|register a moving schedule|
-|DELETE|/{id}|delete reservation|
+|GET|/|예약정보 제공(Date, Apartment)|
+|POST|/|입주 예약|
+|DELETE|/{id}|예약 취소|

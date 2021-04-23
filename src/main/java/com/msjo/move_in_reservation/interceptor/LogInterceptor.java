@@ -1,5 +1,6 @@
 package com.msjo.move_in_reservation.interceptor;
 
+import com.msjo.move_in_reservation.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -17,14 +18,17 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        logger.info("request : " + request.toString());
-        logger.info("response : " + response.toString());
+        logger.info("== INTERCEPT API");
+        logger.info("URI : " + request.getRequestURI());
+        logger.info("LOGIN INFO : " + (User)request.getSession().getAttribute("loginUser"));
 
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+        logger.info("== COMPLETE API");
 
     }
 

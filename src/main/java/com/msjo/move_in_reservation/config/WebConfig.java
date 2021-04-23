@@ -28,8 +28,8 @@ public class WebConfig implements WebMvcConfigurer {
 
         logger.info("interceptor is running");
 
-        registry.addInterceptor(authenticationInterceptor)
-                .addPathPatterns("/api/**");
+//        registry.addInterceptor(authenticationInterceptor)
+//                .addPathPatterns("/api/**");
 
         registry.addInterceptor(logInterceptor)
                 .addPathPatterns("/api/**");
