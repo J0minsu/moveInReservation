@@ -1,21 +1,18 @@
 # API SPECIFICATION
 
-## Authentification
-|Method|Uri( /api/authentifacations )|Description|
-|:---:|:---:|:---:|
-|GET|||
-
 ## User
 |Method|Uri( /api/users )|Description|
 |:---:|:---:|:---:|
-|GET|||
+|POST|/login|log in|
 
 ## Apartment
 |Method|Uri( /api/apartments )|Description|
 |:---:|:---:|:---:|
-|GET|||
+|GET|/|return all|
 
 ## Reservation
 |Method|Uri( /api/reservations )|Description|
 |:---:|:---:|:---:|
-|GET|||
+|GET|/|get reservation info about login info|
+|POST|/|register a moving schedule|
+|DELETE|/{id}|delete reservation|

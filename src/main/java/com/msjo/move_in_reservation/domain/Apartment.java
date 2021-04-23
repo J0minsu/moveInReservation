@@ -29,4 +29,9 @@ public class Apartment {
     @Column(length = 4)
     @NotNull
     private String ho;
+
+    public Apartment(String dong, String ho) {
+        this.dong = dong;
+        this.ho = ho;
+    }
 }

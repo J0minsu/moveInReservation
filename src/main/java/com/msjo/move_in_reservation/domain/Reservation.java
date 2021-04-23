@@ -29,10 +29,11 @@ public class Reservation {
     private LocalDateTime reservationTime;
 
     @ManyToOne
-    @JoinColumn(name = "uesrId")
+    @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "apartmentId")
-    private Apartment apartment;
+    @PrePersist
+    public void setTime() {
+        this.reservationTime = LocalDateTime.now();
+    }
 }
