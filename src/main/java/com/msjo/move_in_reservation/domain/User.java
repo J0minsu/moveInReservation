@@ -1,10 +1,8 @@
 package com.msjo.move_in_reservation.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table
 public class User {
@@ -19,7 +18,7 @@ public class User {
     @Id
     @Column(length = 20)
     @NotNull
-    private String phoneNumber;
+    private String id;
 
     @Column(length = 60)
     @NotNull
@@ -28,8 +27,10 @@ public class User {
     @Column
     private String name;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "apartmentId")
+    @NotNull
     private Apartment apartment;
 
 }

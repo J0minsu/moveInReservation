@@ -18,17 +18,17 @@ public class LogInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        logger.info("== INTERCEPT API");
-        logger.info("URI : " + request.getRequestURI());
+        logger.info("==================== INTERCEPT API");
+        logger.info("METHOD." + request.getMethod() + ", URI : " + request.getRequestURI());
         logger.info("LOGIN INFO : " + (User)request.getSession().getAttribute("loginUser"));
-
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-        logger.info("== COMPLETE API");
+        logger.info("METHOD." + response.getStatus());
+        logger.info("==================== COMPLETE API");
 
     }
 

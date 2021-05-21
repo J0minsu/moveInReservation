@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
 public interface ApartmentRepository extends JpaRepository<Apartment, Integer> {
 
     @Query("SELECT DISTINCT dong from Apartment")
     ArrayList<String> findDistinctDong();
+
 }

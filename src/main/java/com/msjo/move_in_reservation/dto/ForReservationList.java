@@ -3,7 +3,7 @@ package com.msjo.move_in_reservation.dto;
 import com.msjo.move_in_reservation.domain.Apartment;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 public class ForReservationList {
 
-    private LocalDateTime reservationTime;
+    private LocalDate reservationTime;
 
     private Apartment apartment;
 }
