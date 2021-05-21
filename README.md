@@ -8,7 +8,8 @@
 4. BCrypt 를 이용한 암호화 
 5. AOP 활용
 ***
- 
+
+##### Contents 
  1. 프로젝트 구조
  2. RDBMS 모델
  3. API 명세
@@ -16,7 +17,7 @@
   ***
 
 ###1. 프로젝트 구조
-![Structure](../move_in_reservation/documents/Structure.png)
+![Structure](../move_in_reservation/documents/Structure.png?raw=true)
 ######로그인 정보를 서버사이드의 세션에 저장하고, Interceptor를 이용해 비교합니다.
 ######또한, LogInterceptor로 API의 작동과정을 로그로 남깁니다.
 ######클라이언트에서는 LocalStorage에 서비스를 제공하기위한 최소한의 클라이언트정보를 저장합니다.
@@ -50,7 +51,7 @@
 <br><br>
 ### 2. REBMS 모델
 ##### DB ERD
-![DB_ERD](../move_in_reservation/documents/DB_ERD.png)
+![DB_ERD](../move_in_reservation/documents/DB_ERD.png?raw=true)
 
 #####User
 |Column|Type|Description|
