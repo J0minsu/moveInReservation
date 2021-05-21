@@ -16,11 +16,11 @@
  4. 회고
   ***
 
-###1. 프로젝트 구조
+### 1. 프로젝트 구조
 ![Structure](https://github.com/J0minsu/moveInReservation/blob/master/documents/Structure.png?raw=true)
-######로그인 정보를 서버사이드의 세션에 저장하고, Interceptor를 이용해 비교합니다.
-######또한, LogInterceptor로 API의 작동과정을 로그로 남깁니다.
-######클라이언트에서는 LocalStorage에 서비스를 제공하기위한 최소한의 클라이언트정보를 저장합니다.
+###### 로그인 정보를 서버사이드의 세션에 저장하고, Interceptor를 이용해 비교합니다.
+###### 또한, LogInterceptor로 API의 작동과정을 로그로 남깁니다.
+###### 클라이언트에서는 LocalStorage에 서비스를 제공하기위한 최소한의 클라이언트정보를 저장합니다.
 
 ### Technology set
 |Technical Name|Value|
@@ -53,7 +53,7 @@
 ##### DB ERD
 ![DB_ERD](https://github.com/J0minsu/moveInReservation/blob/master/documents/DB_ERD.png?raw=true)
 
-#####User
+##### User
 |Column|Type|Description|
 |:---:|:---:|:---:|
 |phone_number|varchar(20)|pk|
