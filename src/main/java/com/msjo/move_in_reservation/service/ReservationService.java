@@ -28,15 +28,14 @@ public class ReservationService {
     @Transactional
     public Reservation findByPhoneNumber(String phoneNumber) {
 
-        logger.info("========== START SERVICE LOGIC");
+        logger.info("===== Params");
+        logger.info("===== phoneNumber : " + phoneNumber);
 
         Reservation reservation = reservationRepository.findByUserId(phoneNumber).orElse(new Reservation());
         if(reservation.getId() != 0)
             reservation.getUser().setPassword("");
 
-        logger.info("Reservation : " + reservation.toString());
-
-        logger.info("========== FINISH SERVICE LOGIC");
+        logger.info("======= Reservation : " + reservation.toString());
 
         return reservation;
     }
@@ -44,20 +43,18 @@ public class ReservationService {
     @Transactional
     public List<Reservation> findReservations(String dong) {
 
-        logger.info("========== START SERVICE LOGIC");
+        logger.info("===== Params");
+        logger.info("===== dong : " + dong);
 
         List<Reservation> reservations = reservationRepository.findReservationsByUserApartmentDongOrderByReservationTimeAsc(dong);
 
         for(Reservation reservation : reservations) {
-
             //필요없는 정보 초기화
             reservation.setId(0);
-
         }
 
-        logger.info("Reservation's size : " + reservations.size());
-
-        logger.info("========== FINISH SERVICE LOGIC");
+        logger.info("======= Reservation's size : " + reservations.size());
+        logger.info("======= Return value : " + reservations.toString());
 
         return reservations;
     }
@@ -67,7 +64,12 @@ public class ReservationService {
 
         String result = "";
 
+        logger.info("===== Params");
+        logger.info("===== phoneNumber : " + phoneNumber);
+
         Reservation reservation = reservationRepository.findByUserId(phoneNumber).orElse(new Reservation());
+
+        logger.info("====== find Reservation : " + reservation);
 
         if (reservation.getUser() == null) {
             result = "FAILURE";
@@ -75,6 +77,8 @@ public class ReservationService {
             reservationRepository.delete(reservation);
             result = "SUCCESS";
         }
+
+        logger.info("======= Return value : " + result);
 
         return result;
     }
@@ -84,12 +88,19 @@ public class ReservationService {
 
         String result = "";
 
+        logger.info("===== Params");
+        logger.info("===== user : " + user);
+        logger.info("===== reservationTime : " + reservationTime);
+
         Reservation reservation = reservationRepository.findByUserId(user.getId()).orElse(new Reservation());
+
+        logger.info("====== find Reservation : " + reservation);
 
         //날짜와 동이 일치하는 예약건
         Reservation duplicateReservation = reservationRepository.findReservationByUserApartmentDongAndReservationTime(
                 user.getApartment().getDong(), reservationTime).orElse(new Reservation());
 
+        logger.info("====== duplicate time and dong Reservation : " + duplicateReservation);
 
 
         /* 예약 일시 Validation */
@@ -100,10 +111,15 @@ public class ReservationService {
                 //60일 이후의 예약인지
                 !reservationTime.isBefore(LocalDate.now().plusDays(60))) {
 
+            logger.info("====== already exist user's reservation or invalid time");
+
             result = "FAILURE";
         }
         /* 예약 조건(세대) Validation */
         else if (duplicateReservation.getId() != 0) {
+
+            logger.info("====== already exist duplicate reservation");
+
             result = "FAILURE";
         }
         else {
@@ -112,9 +128,12 @@ public class ReservationService {
 
             Reservation saveReservation = new Reservation(user, reservationTime);
 
+            logger.info("====== created reservation : " + saveReservation);
+
             reservationRepository.save(saveReservation);
         }
 
+        logger.info("======= Return value : " + result);
 
         return result;
     }

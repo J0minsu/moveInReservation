@@ -21,15 +21,14 @@ public class ApartmentService {
     @Transactional
     public List<String> findDongList() {
 
-        logger.info("========== START SERVICE LOGIC");
 
         List<String> dongList = new ArrayList<>();
 
         dongList = apartmentRepository.findDistinctDong();
 
-        logger.info("Return value's size." + dongList.size());
+        logger.info("======= Return value's size : " + dongList.size());
+        logger.info("======= Return value : " + dongList.toString());
 
-        logger.info("========== FINISH SERVICE LOGIC");
 
         return dongList;
     }

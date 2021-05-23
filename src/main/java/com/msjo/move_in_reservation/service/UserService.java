@@ -33,6 +33,10 @@ public class UserService {
     public String register(User user) {
 
         String result = "";
+
+        logger.info("===== Params");
+        logger.info("===== user : " + user);
+
         User emptyUser = new User();
 
         User validateExistUser = userRepository.findById(user.getId()).orElse(emptyUser);
@@ -43,14 +47,24 @@ public class UserService {
            //이미 가입자인지,
         if(validateExistUser.getId() == null ||
            //중복된 세대에 관한 회원가입인지
-           validateDuplicateAddressUser.getId() == null) result = "FAILURE";
+           validateDuplicateAddressUser.getId() == null) {
+
+            logger.info("====== already exist user suitable apartment info");
+
+            result = "FAILURE";
+        }
         else {
 
             user.setPassword(passwordEncoder.encode(user.getPassword()));
 
             userRepository.save(user);
+
+            logger.info("====== create user info : " + user);
+
             result = "SUCCESS";
         }
+
+        logger.info("======= Return value : " + result);
 
         return result;
     }
